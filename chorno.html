@@ -85,6 +85,16 @@
         $("#start").click(chorno);
 
         $("#stop").click(function () {});
+
+             $(".btn").on({
+          mouseenter: function () {
+            $(this).css("background-color", "lightblue");
+          },
+          mouseleave: function () {
+            $(this).css("color", "darkblue");
+            $(this).css("background-color", "white");
+          },
+        });
       });
     </script>
   </body>
