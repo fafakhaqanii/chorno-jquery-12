@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Document</title>
+    <style>
+      #box {
+        border: 2px solid rgb(39, 39, 153);
+        padding: 10px;
+        width: 200px;
+        text-align: center;
+        font-size: 25px;
+        border-radius: 10px;
+        background-color: lightblue;
+        color: blue;
+        margin: 30px auto;
+      }
+      #btns {
+        padding: 10px;
+        width: 50%;
+        text-align: center;
+        font-size: 25px;
+        border-radius: 10px;
+        margin: 30px auto;
+      }
+      span {
+        margin: 10px;
+      }
+      .btn {
+        border: 2px solid rgb(39, 39, 153);
+        padding: 10px 30px;
+        border-radius: 20px;
+        margin: 5px 30px;
+        font-size: 20px;
+        color: darkblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <span id="hour">00</span>: <span id="minut">00</span>:
+      <span id="second">00</span>
+    </div>
+    <div id="btns">
+      <button class="btn" id="start">start</button>
+      <button class="btn" id="stop">stop</button>
+    </div>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+
+    <script>
+      function chorno() {
+        let s = 0,
+          m = 0,
+          h = 0;
+        $(function () {
+          setInterval(function () {
+            s++;
+            $("#second").text(s < 10 ? `0${s}` : `${s}`);
+          }, 100);
+
+          setInterval(function () {
+            if (s == 60) {
+              s = 0;
+              m++;
+              $("#minut").text(m < 10 ? `0${m}` : `${m}`);
+            }
+          });
+
+          setInterval(function () {
+            if (m == 60) {
+              m = 0;
+              h++;
+              $("#hour").text(h < 10 ? `0${h}` : `${h}`);
+            }
+          });
+        });
+      }
+
+      $(function () {
+        $("#start").click(chorno);
+
+        $("#stop").click(function () {});
+      });
+    </script>
+  </body>
+</html>
